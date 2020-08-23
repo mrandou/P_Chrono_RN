@@ -45,7 +45,10 @@ export const chronoStyle = {
   },
   minutes: {
     color:'#8BC34A',
-    fontSize: 60,
+    position: 'absolute',
+    bottom:"40%",
+    fontWeight: 'bold',
+    fontSize: 45,
   },
   seconds: {
     position: 'absolute',
@@ -53,12 +56,12 @@ export const chronoStyle = {
     fontWeight: 'bold',
     fontSize: 80,
     // marginBottom: 90,
-    bottom:"35%",
+    bottom:"30%",
   },
   ms: {
     color:'#8BC34A',
     position: 'absolute',
-    top:"55%",
+    top:"60%",
     fontSize: 30,
   },
   circle: {

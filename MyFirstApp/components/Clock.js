@@ -63,8 +63,8 @@ export default class Clock extends React.Component {
       minutes: split[1],
       seconds: split[2],
       ms: split[3],
-      // hours: "00",
-      // minutes: "00",
+      // hours: "01",
+      // minutes: "04",
       // seconds: "21",
       // ms: "123",
     };
@@ -83,21 +83,31 @@ export default class Clock extends React.Component {
   }
 
   displayHr = () => {
+    var parse_hr = parseInt(this.state.currentTime.hours);
     return (
-      <View>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.hours}>{this.state.currentTime.hours}</Text>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.minutes}>{this.state.currentTime.minutes}</Text>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.seconds}>{this.state.currentTime.seconds}</Text>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.ms}>{this.state.currentTime.ms}</Text>
+      <View style={chronoStyle.display}>
+        <Text 
+          onPress={this.toggleStopwatch} 
+          style={chronoStyle.minutes}>
+            {parse_hr <= 10 ? parse_hr : this.state.currentTime.hours}
+            :{this.state.currentTime.minutes}
+        </Text>
+        <Text onPress={this.toggleStopwatch} style={chronoStyle.ms}>{this.state.currentTime.seconds}</Text>
       </View>
     )
   }
 
   displayMin = () => {
+    var parse_min = parseInt(this.state.currentTime.minutes);
     return (
-      <View>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.minutes}>{this.state.currentTime.minutes}</Text>
-        <Text onPress={this.toggleStopwatch} style={chronoStyle.seconds}>{this.state.currentTime.seconds}</Text>
+      <View style={chronoStyle.display}>
+        <Text 
+          onPress={this.toggleStopwatch} 
+          style={chronoStyle.minutes}>
+            {parse_min <= 10 ? parse_min : this.state.currentTime.minutes}
+            :{this.state.currentTime.seconds}
+        </Text>
+        {/* <Text onPress={this.toggleStopwatch} style={chronoStyle.seconds}>{this.state.currentTime.seconds}</Text> */}
         <Text onPress={this.toggleStopwatch} style={chronoStyle.ms}>{this.state.currentTime.ms}</Text>
       </View>
     )
@@ -129,7 +139,6 @@ export default class Clock extends React.Component {
           !this.state.stopwatchStart && this.state.firstTap ? this.state.blink ? <this.displayTime/> : null
           : <this.displayTime/>
         }
-        {/* <Button title={!this.state.stopwatchStart ? "Start" : "Stop"} color="orange" onPress={this.toggleStopwatch}/> */}
       </View>
     )
   }
